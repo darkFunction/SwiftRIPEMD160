@@ -10,11 +10,11 @@ extension Data {
 final class SwiftRIPEMD160Tests: XCTestCase {
 
     func testVectors() {
-		// Test vectors from http://homes.esat.kuleuven.be/~bosselae/ripemd160.html
+        // Test vectors from http://homes.esat.kuleuven.be/~bosselae/ripemd160.html
 
-		func hash(_ string: String) -> String {
-			return RIPEMD160.hash(message: string).hexEncodedString()	
-		}
+        func hash(_ string: String) -> String {
+            return RIPEMD160.hash(message: string).hexEncodedString()   
+        }
 
         XCTAssertEqual(hash(""), "9c1185a5c5e9fc54612808977ee8f548b2258d31")
         XCTAssertEqual(hash("a"), "0bdc9d2d256b3ee9daae347be6f4dc835a467ffe")
@@ -24,18 +24,18 @@ final class SwiftRIPEMD160Tests: XCTestCase {
         XCTAssertEqual(hash("abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq"), "12a053384a9c0c88e405a06c27dcf49ada62eb2b")
         XCTAssertEqual(hash("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"), "b0e20b6e3116640286ed3a87a5713079b21f5189")
 
-		// 8 times "1234567890"
-		var testString = ""
-		for _ in 0..<8 {
-			testString += "1234567890"
-		}
+        // 8 times "1234567890"
+        var testString = ""
+        for _ in 0..<8 {
+            testString += "1234567890"
+        }
         XCTAssertEqual(hash(testString), "9b752e45573d4b39f4dbd3323cab82bf63326bfb")
-		
-		// 1 million times "a"	
-		testString = ""
-		for _ in 0..<1000000 {
-			testString += "a"
-		}
+        
+        // 1 million times "a"  
+        testString = ""
+        for _ in 0..<1000000 {
+            testString += "a"
+        }
         XCTAssertEqual(hash(testString), "52783243c1697bdbe16d37f97f68f08325dc1528")
     }
 
